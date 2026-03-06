@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  Datas.swift
 //  ProjetEspace
 //
 //  Created by Leskeu  on 04/03/2026.
@@ -7,15 +7,26 @@
 
 import SwiftUI
 
-struct Profile: Identifiable {
+class Profile: Identifiable {
     var id = UUID()
     var profileUsername: String
-    var profilePicture: Image
+    var profilePicture: String
     var profileDescription: String
     var profilePoints: Int
     var profileLeaderboardPosition: Int
     var hasFavorites: Bool
-    var favorites: CelestialObject
+    var favorites: CelestialObjectDatas
+    
+    init(id: UUID = UUID(), profileUsername: String, profilePicture: String, profileDescription: String, profilePoints: Int, profileLeaderboardPosition: Int, hasFavorites: Bool, favorites: CelestialObjectDatas) {
+        self.id = id
+        self.profileUsername = profileUsername
+        self.profilePicture = profilePicture
+        self.profileDescription = profileDescription
+        self.profilePoints = profilePoints
+        self.profileLeaderboardPosition = profileLeaderboardPosition
+        self.hasFavorites = hasFavorites
+        self.favorites = favorites
+    }
 }
 
 struct Settings: Identifiable {
@@ -26,14 +37,15 @@ struct Settings: Identifiable {
     var musicSlider: Int
     var soundSlider: Int
 }
+// Music Player à prévoir pour la V2?
 
 class Quizz: Identifiable {
     var id = UUID()
-    var quizzName: Quizzes
+    var quizzName: String
     var quizzProgress: Int = 0
     var quizzDifficulty: Difficulty
     
-    init(id: UUID = UUID(), quizzName: Quizzes, quizzProgress: Int, quizzDifficulty: Difficulty) {
+    init(id: UUID = UUID(), quizzName: String, quizzProgress: Int, quizzDifficulty: Difficulty) {
         self.id = id
         self.quizzName = quizzName
         self.quizzProgress = quizzProgress
@@ -42,15 +54,16 @@ class Quizz: Identifiable {
 }
 
 struct QuestionsAnswers {
-    var Question: Questions
-    var Answer: Answers
+    var Question: String
+    var goodAnswer: String
+    var Answer: [String]
 }
 
 struct CelestialObjectDatas {
-    var name: CelestialObject
-    var image: Image
+    var name: String
+    var image: String
     var description: String
-    var distancetoSun: String
+    var distancetoSun: String?
     var size: String
     var temp: Double
     var hasSatellites: Bool
@@ -59,30 +72,10 @@ struct CelestialObjectDatas {
 
 struct Events: Identifiable {
     var id = UUID()
-    var eventName: Event
-    var eventImage: Image
+    var eventName: String
+    var eventImage: String
     var eventDate: Date
     var eventDescription: String
-}
-
-
-enum Quizzes: String {
-    case quizz1 = "Tutoriel"
-    case quizz2 = "Le commencement"
-    case quizz3 = "Quizz avancé"
-}
-
-enum Questions {
-    case question
-}
-
-enum Answers {
-    case answer1
-    case answer2
-    case answer3
-    case answer4
-    case answer5
-    case answer6
 }
 
 enum Difficulty {
@@ -91,24 +84,4 @@ enum Difficulty {
     case advanced
     case master
     case champion
-}
-
-enum Event: String {
-    case event1 = "Pluie de météorites"
-    case event2 = "Festival Astronomie"
-    case event3 = "Eclipse Solaire"
-    case event4 = "Eclipse Lunaire"
-}
-
-enum CelestialObject: CaseIterable {
-    case sun
-    case mercury
-    case venus
-    case earth
-    case mars
-    case jupiter
-    case saturn
-    case uranus
-    case neptune
-    case pluto
 }
