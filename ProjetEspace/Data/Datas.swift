@@ -14,17 +14,15 @@ class Profile: Identifiable {
     var profileDescription: String
     var profilePoints: Int
     var profileLeaderboardPosition: Int
-    var hasFavorites: Bool
-    var favorites: CelestialObjectDatas
+    var favorites: CelestialObject
     
-    init(id: UUID = UUID(), profileUsername: String, profilePicture: String, profileDescription: String, profilePoints: Int, profileLeaderboardPosition: Int, hasFavorites: Bool, favorites: CelestialObjectDatas) {
+    init(id: UUID = UUID(), profileUsername: String, profilePicture: String, profileDescription: String, profilePoints: Int, profileLeaderboardPosition: Int, hasFavorites: Bool, favorites: CelestialObject) {
         self.id = id
         self.profileUsername = profileUsername
         self.profilePicture = profilePicture
         self.profileDescription = profileDescription
         self.profilePoints = profilePoints
         self.profileLeaderboardPosition = profileLeaderboardPosition
-        self.hasFavorites = hasFavorites
         self.favorites = favorites
     }
 }
@@ -59,7 +57,7 @@ struct QuestionsAnswers {
     var Answer: [String]
 }
 
-struct CelestialObjectDatas {
+struct CelestialObject {
     var name: String
     var image: String
     var description: String
