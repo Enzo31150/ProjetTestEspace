@@ -7,8 +7,12 @@
 
 import SwiftUI
 
+struct ProfilResponse: Codable {
+    let records: [ProfilResult]
+}
+
 struct ProfilResult: Codable {
-    let results: [Profile]
+    let fields: Profile
 }
 
 class Profile: Codable, Identifiable {
@@ -38,9 +42,12 @@ class Profile: Codable, Identifiable {
         self.favorites = favorites
     }
 }
+struct SettingsResponse: Codable {
+    let records: [SettingsResult]
+}
 
 struct SettingsResult: Codable {
-    let results: [Settings]
+    let fields: Settings
 }
 
 struct Settings: Identifiable, Codable {
