@@ -10,12 +10,10 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
-            Image("ciel-etoile")
-                .opacity(0.8)
-            ProfilTemplate()
+            VStack {
+                ProfileMainTemplate()
+            }
         }
-        .padding()
     }
 }
 
