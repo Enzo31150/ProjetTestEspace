@@ -11,7 +11,10 @@ struct ProfileMainTemplate: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.black.ignoresSafeArea()
+                Image("ciel-etoile")
+                    .ignoresSafeArea()
+                    .frame(width: 100, height: 100)
+                //Color.black.ignoresSafeArea()
                 VStack {
                     HStack {
                         Spacer()
