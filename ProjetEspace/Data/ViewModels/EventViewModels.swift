@@ -18,7 +18,7 @@ class EventViewModels {
     )!
     var events: [Events] = []
     
-    func fetchProfils() async throws {
+    func fetchEvent() async throws {
         
         var request = URLRequest(url: baseURL)
         request.httpMethod = "GET"
