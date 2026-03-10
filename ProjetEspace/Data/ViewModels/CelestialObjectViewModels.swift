@@ -18,7 +18,7 @@ class CelestialObjectViewModels {
     )!
     var celestialObject: [CelestialObject] = []
     
-    func fetchProfils() async throws {
+    func fetchCelestial() async throws {
         
         var request = URLRequest(url: baseURL)
         request.httpMethod = "GET"
