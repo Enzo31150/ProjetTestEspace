@@ -114,7 +114,11 @@ struct QuestionsAnswers: Identifiable, Codable{
     }
 }
 struct CelestialObjectResponse: Codable {
-    let results: [CelestialObject]
+    let results: [CelestialObjectResult]
+}
+
+struct CelestialObjectResult: Codable {
+    let fields: CelestialObject
 }
 
 struct CelestialObject: Identifiable, Codable {
@@ -141,7 +145,11 @@ struct CelestialObject: Identifiable, Codable {
 }
 
 struct EventsResponse: Codable {
-    let results: [Events]
+    let results: [EventsResult]
+}
+
+struct EventsResult: Codable {
+    let fields: Events
 }
 
 struct Events: Identifiable, Codable {
