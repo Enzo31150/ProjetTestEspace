@@ -31,12 +31,13 @@ class QuizzViewModels {
         
         do {
             let decoded = try decoder.decode(QuizzResponse.self, from: data)
-            
-            let quizzs = decoded.records.map { $0.fields}
-            self.quizzs = quizzs
+            let quizzs = decoded.records.map {$0.fields}
+            self.quizzs = quizzs.sorted {
+                $0.quizzName < $1.quizzName
+            }
             
         }catch{
-            print ("Echec du décodage : \(error)")
+            print ("Echec du décodage quizz :")
             throw error
         }
     }

@@ -9,18 +9,18 @@ import Foundation
 import Observation
 
 @Observable
-class QuestionsAnswersViewModels {
+class QuestionsViewModels {
     
     private let apikey: String =
     "patcC8TZDmTftqNMb.21403494fe69345206fa582f8268d6da38a87e42ec2762b138ba4d37d57f0570"
     private let baseURL = URL(
         string:"https://api.airtable.com/v0/appHJzJ80jhZ6fY9f/questions?="
     )!
-    var questions: [QuestionsAnswers] = []
+    var questions: [Questions] = []
     
-    func fetchQuestionsAnwsers() async throws {
-        
-        var request = URLRequest(url: baseURL)
+    func fetchQuestionById(id: String) async throws -> Questions {
+        let newURL = URL(string: "https://api.airtable.com/v0/appHJzJ80jhZ6fY9f/Questions/\(id)")!
+        var request = URLRequest(url: newURL)
         request.httpMethod = "GET"
         request.setValue("Bearer \(apikey)", forHTTPHeaderField: "Authorization")
         
@@ -30,10 +30,10 @@ class QuestionsAnswersViewModels {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            let decoded = try decoder.decode(QuestionsAnswersResponse.self, from: data)
+            let decoded = try decoder.decode(QuestionsResult.self, from: data)
             
-            let questions = decoded.records.map { $0.fields}
-            self.questions = questions
+            let question = decoded.fields
+            return question
             
         }catch{
             print ("Echec du décodage : \(error)")
