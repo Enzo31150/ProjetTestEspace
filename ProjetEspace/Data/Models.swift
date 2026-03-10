@@ -71,8 +71,12 @@ struct Settings: Identifiable, Codable {
 
 // Music Player à prévoir pour la V2?
 
+struct QuizzResponse: Codable {
+    let records: [QuizzResult]
+}
+
 struct QuizzResult: Codable {
-    let results: [Quizz]
+    let fields: Quizz
 }
 
 class Quizz: Identifiable, Codable {
