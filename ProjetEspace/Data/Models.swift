@@ -99,8 +99,12 @@ class Quizz: Identifiable, Codable {
     }
 }
 
-struct QuestionsAnswersResults: Codable {
-    let results: [QuestionsAnswers]
+struct QuestionsAnswersResponse: Codable {
+    let records: [QuestionsAnswersResult]
+}
+
+struct QuestionsAnswersResult: Codable {
+    let fields: QuestionsAnswers
 }
 
 struct QuestionsAnswers: Identifiable, Codable{
