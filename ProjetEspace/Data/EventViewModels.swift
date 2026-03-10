@@ -1,22 +1,22 @@
 //
-//  Models.swift
+//  EventViewModels.swift
 //  ProjetEspace
 //
-//  Created by Leskeu  on 09/03/2026.
+//  Created by apprenant128 on 10/03/2026.
 //
 
 import Foundation
 import Observation
 
 @Observable
-class ProfilViewModels {
+class EventViewModels {
     
     private let apikey: String =
     "patcC8TZDmTftqNMb.21403494fe69345206fa582f8268d6da38a87e42ec2762b138ba4d37d57f0570"
     private let baseURL = URL(
-        string:"https://api.airtable.com/v0/appHJzJ80jhZ6fY9f/profil?="
+        string:"https://api.airtable.com/v0/appHJzJ80jhZ6fY9f/events?="
     )!
-    var profils: [Profile] = []
+    var events: [Events] = []
     
     func fetchProfils() async throws {
         
@@ -30,10 +30,10 @@ class ProfilViewModels {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            let decoded = try decoder.decode(ProfilResponse.self, from: data)
+            let decoded = try decoder.decode(EventsResponse.self, from: data)
             
-            let profils = decoded.records.map { $0.fields}
-            self.profils = profils
+            let events = decoded.results.map { $0.fields}
+            self.events = events
             
         }catch{
             print ("Echec du décodage : \(error)")
