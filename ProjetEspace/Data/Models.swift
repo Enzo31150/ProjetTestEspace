@@ -79,47 +79,33 @@ struct QuizzResult: Codable {
     let fields: Quizz
 }
 
-class Quizz: Identifiable, Codable {
-    var id = UUID()
+class Quizz: Codable {
     var quizzName: String
     var quizzProgress: Int = 0
     var quizzDifficulty: Difficulty
+    var questions: [String]
     
-    private enum CodingsKeys: String, CodingKey {
-        case quizzName = "Quizz Name"
-        case quizzProgress = "Quizz Progress"
-        case quizzDifficulty = "Quizz Difficulty"
-    }
-    
-    init(id: UUID = UUID(), quizzName: String, quizzProgress: Int, quizzDifficulty: Difficulty) {
-        self.id = id
+    init(quizzName: String, quizzProgress: Int, quizzDifficulty: Difficulty, questions: [String] = []) {
         self.quizzName = quizzName
         self.quizzProgress = quizzProgress
         self.quizzDifficulty = quizzDifficulty
+        self.questions = questions
     }
 }
 
-struct QuestionsAnswersResponse: Codable {
-    let records: [QuestionsAnswersResult]
+struct QuestionsResponse: Codable {
+    let records: [QuestionsResult]
 }
 
-struct QuestionsAnswersResult: Codable {
-    let fields: QuestionsAnswers
+struct QuestionsResult: Codable {
+    let fields: Questions
 }
 
-struct QuestionsAnswers: Identifiable, Codable{
-    var id = UUID()
-    var Question: String
-    var goodAnswer: String
-    var Answer: [String]
-    var inquizz: Quizz
-    
-    private enum CodingsKeys: String, CodingKey {
-        case Question = "Questions"
-        case goodAnswer = "GoodAnswer"
-        case Answer = "Answers"
-        case Inquizz = "InQuizz"
-    }
+struct Questions: Codable{
+    var question: String
+    var nameGoodAnswer: [String]
+    var nameAnswers: [String]
+
 }
 struct CelestialObjectResponse: Codable {
     let results: [CelestialObjectResult]
@@ -176,10 +162,10 @@ struct Events: Identifiable, Codable {
     }
 }
 
-enum Difficulty: Codable {
-    case beginner
-    case intermediary
-    case advanced
-    case master
-    case champion
+enum Difficulty: String, Codable {
+    case beginner = "Beginner"
+    case intermediary = "Intermediary"
+    case advanced = "Advanced"
+    case master = "Master"
+    case champion = "Champion"
 }
