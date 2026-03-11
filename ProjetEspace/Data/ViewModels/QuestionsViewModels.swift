@@ -36,6 +36,28 @@ class QuestionsViewModels {
             return question
             
         }catch{
+            print ("Echec du décodage : question")
+            throw error
+        }
+    }
+    func fetchAnswerById(id: String) async throws -> Answers {
+        let newURL = URL(string: "https://api.airtable.com/v0/appHJzJ80jhZ6fY9f/Answers/\(id)")!
+        var request = URLRequest(url: newURL)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(apikey)", forHTTPHeaderField: "Authorization")
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
+        do {
+            let decoded = try decoder.decode(AnswersResult.self, from: data)
+            
+            let answer = decoded.fields
+            return answer
+            
+        }catch{
             print ("Echec du décodage : \(error)")
             throw error
         }
