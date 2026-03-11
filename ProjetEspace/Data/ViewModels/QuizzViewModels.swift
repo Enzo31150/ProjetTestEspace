@@ -36,7 +36,7 @@ class QuizzViewModels {
                 $0.quizzName < $1.quizzName
             }
             
-        }catch{
+        } catch {
             print ("Echec du décodage quizz :")
             throw error
         }

@@ -103,8 +103,8 @@ struct QuestionsResult: Codable {
 
 struct Questions: Codable{
     var question: String
-    var goodAnswer: [String]
-    var answers: [String]
+    var nameGoodAnswer: [String]
+    var nameAnswers: [String]
 
 }
 struct CelestialObjectResponse: Codable {
