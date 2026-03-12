@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 import Observation
 
 struct ProfilResponse: Codable {
@@ -151,28 +152,28 @@ struct CelestialObject: Identifiable, Codable {
     }
 }
 
-struct EventsResponse: Codable {
-    let results: [EventsResult]
-}
+//struct EventsResponse: Codable {
+//    let results: [EventsResult]
+//}
+//
+//struct EventsResult: Codable {
+//    let fields: SpaceEvent
+//}
 
-struct EventsResult: Codable {
-    let fields: Events
-}
-
-struct Events: Identifiable, Codable {
+struct SpaceEvent: Identifiable {
     var id = UUID()
-    var eventName: String
-    var eventImage: String
-    var eventDate: Date
-    var eventDescription: String
+    var title: String
+    var image: String
+    var date: Date
+    var description: String
     
-    private enum CodingsKeys: String, CodingKey {
-        case eventName = "Name"
-        case eventImage = "Image"
-        case eventDate = "Date"
-        case eventDescription = "Description"
-        
-    }
+//    private enum CodingsKeys: String, CodingKey {
+//        case title = "Name"
+//        case eventImage = "Image"
+//        case eventDate = "Date"
+//        case eventDescription = "Description"
+//        
+//    }
 }
 
 enum Difficulty: String, Codable {

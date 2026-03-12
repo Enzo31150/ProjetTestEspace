@@ -22,7 +22,7 @@ struct ProfileFavoriteBoard: View {
                 Text("Le Soleil") // AJOUTER DATA favori préféré objet céleste
                     .font(Font.custom("ShareTechMono-Regular", size: 20))
                 Button {
-                    // ECRAN CLASSEMENT
+                    // ECRAN FAVORIS
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 16)
