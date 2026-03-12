@@ -14,12 +14,11 @@ struct ProfileMainTemplate: View {
                 Image("ciel-etoile")
                     .ignoresSafeArea()
                     .frame(width: 100, height: 100)
-                //Color.black.ignoresSafeArea()
                 VStack {
                     HStack {
                         Spacer()
-                        Button {
-                            // ECRAN PARAMETRES
+                        NavigationLink {
+                            SettingsMainTemplate()
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15)

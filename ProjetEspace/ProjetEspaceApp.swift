@@ -1,8 +1,8 @@
 //
-//  ProjetEspaceApp.swift
-//  ProjetEspace
+//  SpaceEventApp.swift
+//  SpaceEvent
 //
-//  Created by apprenant128 on 04/03/2026.
+//  Created by Apprenant 78 on 10/03/2026.
 //
 
 import SwiftUI
