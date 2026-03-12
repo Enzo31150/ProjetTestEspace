@@ -13,10 +13,12 @@ struct ClassementView: View {
             Image("ciel-etoile")
                 .ignoresSafeArea()
                 .frame(width: 100, height: 100)
-            VStack {
-                backgroundClassement()
-                RectangleClassement()
-            }
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    backgroundClassement()
+                    RectangleClassement()
+                }
+            } 
         }
     }
 }
