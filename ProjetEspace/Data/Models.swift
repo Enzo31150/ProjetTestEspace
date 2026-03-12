@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Observation
 
 struct ProfilResponse: Codable {
     let records: [ProfilResult]
@@ -42,31 +43,31 @@ class Profile: Codable, Identifiable {
         self.favorites = favorites
     }
 }
-struct SettingsResponse: Codable {
-    let records: [SettingsResult]
-}
 
-struct SettingsResult: Codable {
-    let fields: Settings
-}
-
-struct Settings: Identifiable, Codable {
+@Observable
+class Settings: Identifiable {
     var id = UUID()
     var colorblindMode: Bool
     var calendarNotifications: Bool
-    var colorThemes: Int
-    var musicSlider: Int
-    var soundSlider: Int
+    var colorThemeOne: Bool
+    var colorThemeTwo: Bool
+    var colorThemeThree: Bool
+    var musicSlider: Double
+    var soundSlider: Double
     
-    private enum CodingsKeys: String, CodingKey {
-        case colorblindMode = "ColorBlindMode"
-        case calendarNotifications = "CalendarNotifications"
-        case colorThemes = "ColorThemes"
-        case musicSlider = "MusicSlider"
-        case soundSlider = "SoundSlider"
+    init(id: UUID = UUID(), colorblindMode: Bool, calendarNotifications: Bool, colorThemeOne: Bool, colorThemeTwo: Bool, colorThemeThree: Bool, musicSlider: Double, soundSlider: Double) {
+        self.id = id
+        self.colorblindMode = colorblindMode
+        self.calendarNotifications = calendarNotifications
+        self.colorThemeOne = colorThemeOne
+        self.colorThemeTwo = colorThemeTwo
+        self.colorThemeThree = colorThemeThree
+        self.musicSlider = musicSlider
+        self.soundSlider = soundSlider
     }
 }
 
+var userSettings = Settings(colorblindMode: false, calendarNotifications: true, colorThemeOne: true, colorThemeTwo: false, colorThemeThree: false, musicSlider: 0, soundSlider: 100)
 
 
 // Music Player à prévoir pour la V2?
