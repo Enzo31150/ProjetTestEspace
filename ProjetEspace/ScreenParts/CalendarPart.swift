@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CalendarView: View {
+struct CalendarPart: View {
     
     @State var selectedDate: Date = Date()
     
@@ -30,5 +30,5 @@ struct CalendarView: View {
 }
 
 #Preview {
-    CalendarView()
+    CalendarPart()
 }
