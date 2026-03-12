@@ -15,14 +15,18 @@ struct ProfilResult: Codable {
     let fields: Profile
 }
 
+struct imagesProfils: Codable {
+    let url: String
+}
+
 class Profile: Codable, Identifiable {
     var id = UUID()
     var profileUsername: String
-    var profilePicture: String
+    var profilePicture: [imagesProfils]
     var profileDescription: String
     var profilePoints: Int
     var profileLeaderboardPosition: Int
-    var favorites: CelestialObject
+    var favorites: [String]?
     
     private enum CodingKeys: String, CodingKey {
         case profileUsername = "ProfilUsername"
@@ -32,7 +36,7 @@ class Profile: Codable, Identifiable {
         case profileLeaderboardPosition = "ProfilLeaderboardPosition"
         case favorites = "Favorites"
     }
-    init(id: UUID = UUID(), profileUsername: String, profilePicture: String, profileDescription: String, profilePoints: Int, profileLeaderboardPosition: Int, favorites: CelestialObject) {
+    init(id: UUID = UUID(), profileUsername: String, profilePicture: [imagesProfils], profileDescription: String, profilePoints: Int, profileLeaderboardPosition: Int, favorites: [String] = []) {
         self.id = id
         self.profileUsername = profileUsername
         self.profilePicture = profilePicture
@@ -176,4 +180,20 @@ enum Difficulty: String, Codable {
     case advanced = "Advanced"
     case master = "Master"
     case champion = "Champion"
+}
+
+struct Attachment: Codable {
+    let id: String
+    let url: URL
+    let thumbnails: Thumbnails?
+}
+
+struct Thumbnails: Codable {
+    let small: ThumbnailVariant?
+    let large: ThumbnailVariant?
+    let full: ThumbnailVariant?
+}
+
+struct ThumbnailVariant: Codable {
+    let url: URL
 }
