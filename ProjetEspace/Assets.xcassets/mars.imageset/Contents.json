@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
