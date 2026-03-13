@@ -36,7 +36,7 @@ class ProfilViewModels {
             self.profils = profils
             
         }catch{
-            print ("Echec du décodage : \(error)")
+            print ("Echec du décodage : profil")
             throw error
         }
         }

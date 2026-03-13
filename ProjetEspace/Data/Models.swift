@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Foundation
+import Observation
 
 struct ProfilResponse: Codable {
     let records: [ProfilResult]
@@ -15,14 +17,18 @@ struct ProfilResult: Codable {
     let fields: Profile
 }
 
+struct imagesProfils: Codable {
+    let url: String
+}
+
 class Profile: Codable, Identifiable {
     var id = UUID()
     var profileUsername: String
-    var profilePicture: String
+    var profilePicture: [imagesProfils]
     var profileDescription: String
     var profilePoints: Int
     var profileLeaderboardPosition: Int
-    var favorites: CelestialObject
+    var favorites: [String]?
     
     private enum CodingKeys: String, CodingKey {
         case profileUsername = "ProfilUsername"
@@ -32,7 +38,7 @@ class Profile: Codable, Identifiable {
         case profileLeaderboardPosition = "ProfilLeaderboardPosition"
         case favorites = "Favorites"
     }
-    init(id: UUID = UUID(), profileUsername: String, profilePicture: String, profileDescription: String, profilePoints: Int, profileLeaderboardPosition: Int, favorites: CelestialObject) {
+    init(id: UUID = UUID(), profileUsername: String, profilePicture: [imagesProfils], profileDescription: String, profilePoints: Int, profileLeaderboardPosition: Int, favorites: [String] = []) {
         self.id = id
         self.profileUsername = profileUsername
         self.profilePicture = profilePicture
@@ -42,76 +48,78 @@ class Profile: Codable, Identifiable {
         self.favorites = favorites
     }
 }
-struct SettingsResponse: Codable {
-    let records: [SettingsResult]
-}
 
-struct SettingsResult: Codable {
-    let fields: Settings
-}
-
-struct Settings: Identifiable, Codable {
+@Observable
+class Settings: Identifiable {
     var id = UUID()
     var colorblindMode: Bool
     var calendarNotifications: Bool
-    var colorThemes: Int
-    var musicSlider: Int
-    var soundSlider: Int
+    var colorThemeOne: Bool
+    var colorThemeTwo: Bool
+    var colorThemeThree: Bool
+    var musicSlider: Double
+    var soundSlider: Double
     
-    private enum CodingsKeys: String, CodingKey {
-        case colorblindMode = "ColorBlindMode"
-        case calendarNotifications = "CalendarNotifications"
-        case colorThemes = "ColorThemes"
-        case musicSlider = "MusicSlider"
-        case soundSlider = "SoundSlider"
+    init(id: UUID = UUID(), colorblindMode: Bool, calendarNotifications: Bool, colorThemeOne: Bool, colorThemeTwo: Bool, colorThemeThree: Bool, musicSlider: Double, soundSlider: Double) {
+        self.id = id
+        self.colorblindMode = colorblindMode
+        self.calendarNotifications = calendarNotifications
+        self.colorThemeOne = colorThemeOne
+        self.colorThemeTwo = colorThemeTwo
+        self.colorThemeThree = colorThemeThree
+        self.musicSlider = musicSlider
+        self.soundSlider = soundSlider
     }
 }
 
+var userSettings = Settings(colorblindMode: false, calendarNotifications: true, colorThemeOne: true, colorThemeTwo: false, colorThemeThree: false, musicSlider: 0, soundSlider: 100)
 
 
 // Music Player à prévoir pour la V2?
 
-struct QuizzResult: Codable {
-    let results: [Quizz]
+struct QuizzResponse: Codable {
+    let records: [QuizzResult]
 }
 
-class Quizz: Identifiable, Codable {
-    var id = UUID()
+struct QuizzResult: Codable {
+    let fields: Quizz
+}
+
+class Quizz: Codable {
     var quizzName: String
     var quizzProgress: Int = 0
     var quizzDifficulty: Difficulty
+    var questions: [String]
     
-    private enum CodingsKeys: String, CodingKey {
-        case quizzName = "Quizz Name"
-        case quizzProgress = "Quizz Progress"
-        case quizzDifficulty = "Quizz Difficulty"
-    }
-    
-    init(id: UUID = UUID(), quizzName: String, quizzProgress: Int, quizzDifficulty: Difficulty) {
-        self.id = id
+    init(quizzName: String, quizzProgress: Int, quizzDifficulty: Difficulty, questions: [String] = []) {
         self.quizzName = quizzName
         self.quizzProgress = quizzProgress
         self.quizzDifficulty = quizzDifficulty
+        self.questions = questions
     }
 }
 
-struct QuestionsAnswersResults: Codable {
-    let results: [QuestionsAnswers]
+struct QuestionsResponse: Codable {
+    let records: [QuestionsResult]
 }
 
-struct QuestionsAnswers: Identifiable, Codable{
-    var id = UUID()
-    var Question: String
-    var goodAnswer: String
-    var Answer: [String]
-    var inquizz: Quizz
-    
-    private enum CodingsKeys: String, CodingKey {
-        case Question = "Questions"
-        case goodAnswer = "GoodAnswer"
-        case Answer = "Answers"
-        case Inquizz = "InQuizz"
-    }
+struct QuestionsResult: Codable {
+    let fields: Questions
+}
+
+struct Questions: Codable{
+    var question: String
+    var answers: [String]
+
+}
+struct AnswersResult: Codable {
+    let fields: Answers
+}
+
+struct Answers: Codable{
+    var isGood: Bool
+    var nameanswers: String
+
 }
 struct CelestialObjectResponse: Codable {
     let results: [CelestialObjectResult]
@@ -144,34 +152,50 @@ struct CelestialObject: Identifiable, Codable {
     }
 }
 
-struct EventsResponse: Codable {
-    let results: [EventsResult]
-}
+//struct EventsResponse: Codable {
+//    let results: [EventsResult]
+//}
+//
+//struct EventsResult: Codable {
+//    let fields: SpaceEvent
+//}
 
-struct EventsResult: Codable {
-    let fields: Events
-}
-
-struct Events: Identifiable, Codable {
+struct SpaceEvent: Identifiable {
     var id = UUID()
-    var eventName: String
-    var eventImage: String
-    var eventDate: Date
-    var eventDescription: String
+    var title: String
+    var image: String
+    var date: Date
+    var description: String
     
-    private enum CodingsKeys: String, CodingKey {
-        case eventName = "Name"
-        case eventImage = "Image"
-        case eventDate = "Date"
-        case eventDescription = "Description"
-        
-    }
+//    private enum CodingsKeys: String, CodingKey {
+//        case title = "Name"
+//        case eventImage = "Image"
+//        case eventDate = "Date"
+//        case eventDescription = "Description"
+//        
+//    }
 }
 
-enum Difficulty: Codable {
-    case beginner
-    case intermediary
-    case advanced
-    case master
-    case champion
+enum Difficulty: String, Codable {
+    case beginner = "Beginner"
+    case intermediary = "Intermediary"
+    case advanced = "Advanced"
+    case master = "Master"
+    case champion = "Champion"
+}
+
+struct Attachment: Codable {
+    let id: String
+    let url: URL
+    let thumbnails: Thumbnails?
+}
+
+struct Thumbnails: Codable {
+    let small: ThumbnailVariant?
+    let large: ThumbnailVariant?
+    let full: ThumbnailVariant?
+}
+
+struct ThumbnailVariant: Codable {
+    let url: URL
 }

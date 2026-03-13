@@ -1,24 +1,24 @@
 //
-//  CelestialObjectViewModels.swift
+//  QuizzViewModels.swift
 //  ProjetEspace
 //
-//  Created by apprenant128 on 10/03/2026.
+//  Created by Apprenant 109 on 10/03/2026.
 //
 
 import Foundation
 import Observation
 
 @Observable
-class CelestialObjectViewModels {
+class QuizzViewModels {
     
     private let apikey: String =
     "patcC8TZDmTftqNMb.21403494fe69345206fa582f8268d6da38a87e42ec2762b138ba4d37d57f0570"
     private let baseURL = URL(
-        string:"https://api.airtable.com/v0/appHJzJ80jhZ6fY9f/planètes?="
+        string:"https://api.airtable.com/v0/appHJzJ80jhZ6fY9f/quizz?="
     )!
-    var celestialObject: [CelestialObject] = []
+    var quizzs: [Quizz] = []
     
-    func fetchProfils() async throws {
+    func fetchQuizzs() async throws {
         
         var request = URLRequest(url: baseURL)
         request.httpMethod = "GET"
@@ -30,15 +30,15 @@ class CelestialObjectViewModels {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            let decoded = try decoder.decode(CelestialObjectResponse.self, from: data)
+            let decoded = try decoder.decode(QuizzResponse.self, from: data)
+            let quizzs = decoded.records.map {$0.fields}
+            self.quizzs = quizzs.sorted {
+                $0.quizzName < $1.quizzName
+            }
             
-            let celestialObject = decoded.results.map { $0.fields}
-            self.celestialObject = celestialObject
-            
-        }catch{
-            print ("Echec du décodage : \(error)")
+        } catch {
+            print ("Echec du décodage quizz :")
             throw error
         }
     }
 }
-
