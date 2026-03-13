@@ -199,3 +199,11 @@ struct Thumbnails: Codable {
 struct ThumbnailVariant: Codable {
     let url: URL
 }
+
+struct Planet: Identifiable, Equatable, Hashable {
+    let id = UUID()
+    let name: String
+    let imageName: String
+    let hasRings: Bool
+    // var moons: [Moon] // à ajouter plus  tard
+}
