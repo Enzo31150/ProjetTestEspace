@@ -14,7 +14,7 @@ class ProfilViewModels {
     private let apikey: String =
     "patcC8TZDmTftqNMb.21403494fe69345206fa582f8268d6da38a87e42ec2762b138ba4d37d57f0570"
     private let baseURL = URL(
-        string:"https://api.airtable.com/v0/appHJzJ80jhZ6fY9f/profil?="
+        string:"https://api.airtable.com/v0/appHJzJ80jhZ6fY9f/profil"
         )!
     var profils: [Profile] = []
     
