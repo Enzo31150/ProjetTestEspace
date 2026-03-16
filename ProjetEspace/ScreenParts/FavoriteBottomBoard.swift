@@ -33,12 +33,12 @@ struct FavoriteBottomBoard: View {
                                             .foregroundStyle(.specialBlack)
                                     )
                                 VStack {
-                                    Text("Kepler-68")
+                                    Text("Saturne")
                                         .font(Font.custom("ShareTechMono-Regular", size: 24))
-                                    Image("kepler68") // AJOUTER DATA favori préféré objet céleste
+                                    Image("saturne") // AJOUTER DATA favori préféré objet céleste
                                         .resizable()
-                                        .frame(width: 70, height: 70)
-                                    Text("Étoile")
+                                        .frame(width: 100, height: 70)
+                                    Text("Planète")
                                         .font(Font.custom("ShareTechMono-Regular", size: 22))
                                 }
                             }
