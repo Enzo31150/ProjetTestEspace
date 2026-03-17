@@ -12,7 +12,6 @@ struct RectangleClassement: View {
     var body: some View {
         VStack {
             ForEach(Array(vmProfil.profils.enumerated()).sorted { $1.element.profilePoints < $0.element.profilePoints }, id: \.element.profilePoints) { index, _ in
-                // Create a binding to the profile at the given index
                 RectangleRow(profil: $vmProfil.profils[index])
             }
             

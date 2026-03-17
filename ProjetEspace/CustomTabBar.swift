@@ -27,7 +27,7 @@ struct CustomTabBar: View {
             Text(text)
                 .font(.caption)
         }
-        .foregroundColor(selected == index ? .buttonPurple : .white)
+        .foregroundColor(selected == index ? .buttonPurple : .specialBlack)
         .frame(maxWidth: .infinity)
         .onTapGesture {
             selected = index
