@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileFavoriteBoard: View {
-    @Bindable var vmProfile = ProfilViewModels()
+    @Binding var profil: Profile
     var body: some View {
         NavigationStack {
             ZStack {
@@ -40,16 +40,5 @@ struct ProfileFavoriteBoard: View {
                 }
             }
         }.foregroundStyle(.white)
-            .task {
-                do {
-                    try await vmProfile.fetchProfils()
-                } catch {
-                    print(error)
-                }
-            }
     }
-}
-
-#Preview {
-    ProfileFavoriteBoard()
 }

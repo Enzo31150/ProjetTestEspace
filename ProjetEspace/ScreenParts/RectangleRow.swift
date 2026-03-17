@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RectangleRow: View {
     @Binding var profil : Profile
-    @State var vmProfil = ProfilViewModels()
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 0)

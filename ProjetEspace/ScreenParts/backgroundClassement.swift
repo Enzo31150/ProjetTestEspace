@@ -10,10 +10,11 @@ import SwiftUI
 struct backgroundClassement: View {
     var body: some View {
         VStack {
-            Image("spacemarine")
+            Image(systemName: "person.crop.circle")
                 .resizable()
                 .clipShape(.circle)
                 .frame(width: 150, height: 150)
+                .foregroundStyle(.white)
            // ZStack {
 //                RoundedRectangle(cornerRadius: 0)
 //                    .frame(width: 350, height: 160)
