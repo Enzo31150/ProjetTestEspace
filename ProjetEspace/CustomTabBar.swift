@@ -9,8 +9,11 @@ struct CustomTabBar: View {
         HStack {
             
             tab(icon: "moon.stars.fill", text: "Observation", index: 0)
+            
             tab(icon: "calendar", text: "Calendrier", index: 1)
+            
             tab(icon: "lightbulb", text: "Quizz", index: 2)
+            
             tab(icon: "person.circle", text: "Profil", index: 3)
             
         }

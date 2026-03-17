@@ -14,6 +14,8 @@ struct ModelViewQuestionnaire: View {
     @State var disabled = false
     @State var isSelectedAnswer : Int? = nil
     
+    var quiz: [Question]
+    
     var body: some View {
         ZStack {
             Image("ciel-etoile")
@@ -26,35 +28,35 @@ struct ModelViewQuestionnaire: View {
                         .frame(width: 370, height: 680)
                         .opacity(0.8)
                     VStack(alignment: .leading, spacing: 12) {
-                        Image(allQuestions[indexAnswer].picture)
+                        Image(quiz[indexAnswer].picture)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 250, height: 200)
                             .cornerRadius(20)
                             .frame(maxWidth: .infinity, alignment: .center)
                         
-                        Text("Question \(indexAnswer + 1)/\(allQuestions.count)")
+                        Text("Question \(indexAnswer + 1)/\(quiz.count)")
                             .foregroundStyle(.white)
                             .font(Font.custom("ShareTechMono-Regular", size: 20))
                             .padding()
                             .multilineTextAlignment(.center)
                             .frame(maxWidth: .infinity, alignment: .center)
                         
-                        Text(allQuestions[indexAnswer].question)
+                        Text(quiz[indexAnswer].question)
                             .foregroundStyle(.white)
                             .font(Font.custom("ShareTechMono-Regular", size: 20))
                             .padding()
                             .multilineTextAlignment(.center)
                             .frame(maxWidth: .infinity, alignment: .center)
                         
-                        ForEach(allQuestions[indexAnswer].answers.enumerated(), id: \.offset) { index, answer in
+                        ForEach(quiz[indexAnswer].answers.enumerated(), id: \.offset) { index, answer in
                             
                             Button {
                                 
                                 isSelectedAnswer = index
                                 disabled = true
                                 
-                                if isSelectedAnswer == allQuestions[indexAnswer].correctAnswer {
+                                if isSelectedAnswer == quiz[indexAnswer].correctAnswer {
                                     numberOfPoints += 1
                                 }
                                 
@@ -71,7 +73,7 @@ struct ModelViewQuestionnaire: View {
                                 } else {
                                     Text(answer)
                                         .frame(width: 350, height: 53)
-                                        .background(index == allQuestions[indexAnswer].correctAnswer ? .buttonPurple : .red)
+                                        .background(index == quiz[indexAnswer].correctAnswer ? .buttonPurple : .red)
                                         .foregroundStyle(.white)
                                         .font(Font.custom("ShareTechMono-Regular", size: 15))
                                         .cornerRadius(40)
@@ -82,7 +84,7 @@ struct ModelViewQuestionnaire: View {
                             .disabled(disabled)
                         }
                         
-                        if isSelectedAnswer != allQuestions[indexAnswer].correctAnswer && isSelectedAnswer != nil {
+                        if isSelectedAnswer != quiz[indexAnswer].correctAnswer && isSelectedAnswer != nil {
                             Text("Mauvaise réponse")
                                 .font(Font.custom("ShareTechMono-Regular", size: 15))
                                 .foregroundStyle(.white)
@@ -132,5 +134,5 @@ struct ModelViewQuestionnaire: View {
 }
 
 #Preview {
-    ModelViewQuestionnaire ()
+    ModelViewQuestionnaire ( quiz: allQuestions)
 }
