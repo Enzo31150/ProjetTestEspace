@@ -21,7 +21,7 @@ struct ModelViewQuestionnaire: View {
             Image("ciel-etoile")
                 .ignoresSafeArea()
                 .frame(width: 100, height: 100)
-            VStack {
+    
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
                         .foregroundStyle(.specialBlack)
@@ -101,34 +101,36 @@ struct ModelViewQuestionnaire: View {
                                 .foregroundStyle(.white)
                                 .frame(maxWidth: .infinity, alignment: .center)
                         }
-                        Text("\(numberOfPoints) points")
-                            .frame(width: 80, height: 53)
-                            .background(.specialBlack)
-                            .foregroundStyle(.white)
-                            .font(Font.custom("ShareTechMono-Regular", size: 15))
-                            .cornerRadius(40)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                        
+                        HStack {
+                            Text("\(numberOfPoints) points")
+                                .frame(width: 80, height: 53)
+                                .background(.specialBlack)
+                                .foregroundStyle(.white)
+                                .font(Font.custom("ShareTechMono-Regular", size: 15))
+                                .cornerRadius(40)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                            
+                            Button {
+                                                if indexAnswer < 29 {
+                                                    indexAnswer += 1
+                                                }
+                                                isSelectedAnswer = nil
+                                                disabled = false
+                                            } label: {
+                                                Text("Next")
+                                                    .frame(width: 200, height: 53)
+                                                    .background(.specialBlack)
+                                                    .foregroundStyle(.white)
+                                                    .font(Font.custom("ShareTechMono-Regular", size: 15))
+                                                    .cornerRadius(40)
+                                                    .frame(maxWidth: .infinity, alignment: .center)
+                                            }
+                        }
                     }
                 } .padding(.horizontal, 20)
                     .padding(.vertical, 16)
                 
-                Button {
-                    if indexAnswer < 29 {
-                        indexAnswer += 1
-                    }
-                    isSelectedAnswer = nil
-                    disabled = false
-                } label: {
-                    Text("Question Suivante")
-                        .frame(width: 200, height: 53)
-                        .background(.specialBlack)
-                        .foregroundStyle(.white)
-                        .font(Font.custom("ShareTechMono-Regular", size: 15))
-                        .cornerRadius(40)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-            }
+            
         }
     }
 }

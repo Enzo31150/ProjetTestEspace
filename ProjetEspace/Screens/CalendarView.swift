@@ -12,7 +12,10 @@ struct CalendarView: View {
     var body: some View {
         
         ZStack{
-            
+            Image("spaceBackground")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
             CalendarPart()
             
         }

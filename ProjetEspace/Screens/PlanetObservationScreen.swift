@@ -54,10 +54,6 @@ struct PlanetObservationScreen: View {
     }
 }
 
-struct PlanetObservationScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        PlanetObservationScreen()
-            .previewDevice("iPhone 17 Pro")
-            .preferredColorScheme(.dark)
-    }
+#Preview {
+    PlanetObservationScreen()
 }
