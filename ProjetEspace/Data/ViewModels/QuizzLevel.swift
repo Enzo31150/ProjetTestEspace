@@ -16,6 +16,15 @@ struct Question: Identifiable {
     var difficulty: Difficulty
 }
 
+enum Difficulty: String, Identifiable, CaseIterable{
+    var id: String { self.rawValue }
+    case beginer = "Beginner"
+    case intermediary = "Intermediary"
+    case advanced = "Advanced"
+    case master = "Master"
+    case champion = "Champion"
+}
+
 let allQuestions: [Question] = [
 
     // MARK: - BEGINER (20)
@@ -733,3 +742,7 @@ let allQuestions: [Question] = [
         difficulty: .champion
     )
 ]
+
+func filteredQuestionbyDifficulty( difficulty: Difficulty) -> [Question] {
+    return allQuestions.filter { $0.difficulty == difficulty} 
+}

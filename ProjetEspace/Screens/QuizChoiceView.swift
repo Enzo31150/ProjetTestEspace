@@ -8,10 +8,38 @@
 import SwiftUI
 
 struct QuizChoiceView: View {
+//    @State var viewModel = QuizzViewModels()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            ZStack {
+                Image("ciel-etoile")
+                    .ignoresSafeArea()
+                    .frame(width: 100, height: 100)
+            }
+            ScrollView {
+                VStack {
+//                    if viewModel.quizzs.isEmpty {
+//                        ProgressView()
+//                    } else {
+                        ForEach(Difficulty.allCases) { difficulty in
+                            NavigationLink {
+                                ModelViewQuestionnaire( quiz: filteredQuestionbyDifficulty(difficulty: difficulty))
+                            } label: {
+                                QuizzCardView(difficulty: difficulty)
+                            }
+                        }
+                    }
+                }
+            }
+//        }
+//        .task {
+//            do {
+//                try await viewModel.fetchQuizzs()
+//            } catch {
+//                print("Erreur fetch:", error)
+//            }
+        }
     }
-}
 
 #Preview {
     QuizChoiceView()
