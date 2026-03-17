@@ -176,8 +176,9 @@ struct SpaceEvent: Identifiable {
 //    }
 }
 
-enum Difficulty: String, Codable {
-    case beginner = "Beginner"
+enum Difficulty: String, Codable, CaseIterable{
+    var id: String { self.rawValue }
+    case beginer = "Beginner"
     case intermediary = "Intermediary"
     case advanced = "Advanced"
     case master = "Master"
