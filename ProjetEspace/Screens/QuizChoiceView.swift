@@ -26,6 +26,7 @@ struct QuizChoiceView: View {
                                 ModelViewQuestionnaire( quiz: filteredQuestionbyDifficulty(difficulty: difficulty))
                             } label: {
                                 QuizzCardView(difficulty: difficulty)
+                                    .padding(.vertical)
                             }
                         }
                     }
