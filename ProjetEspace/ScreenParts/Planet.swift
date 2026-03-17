@@ -9,13 +9,13 @@ import Foundation
 
 extension Planet {
     static let all: [Planet] = [
-        .init(name: "Mercure", imageName: "mercury", hasRings: false),
-        .init(name: "Vénus", imageName: "venus", hasRings: false),
-        .init(name: "Terre", imageName: "earth", hasRings: false),
-        .init(name: "Mars", imageName: "mars", hasRings: false),
-        .init(name: "Jupiter", imageName: "jupiter", hasRings: false),
-        .init(name: "Saturne", imageName: "saturn", hasRings: true),
-        .init(name: "Uranus", imageName: "uranus", hasRings: true),
-        .init(name: "Neptune", imageName: "neptune", hasRings: false),
+        .init(name: "Mercure", imageName: "mercurypng", hasRings: false),
+        .init(name: "Vénus", imageName: "venuspng", hasRings: false),
+        .init(name: "Terre", imageName: "earthpng", hasRings: false),
+        .init(name: "Mars", imageName: "marspng", hasRings: false),
+        .init(name: "Jupiter", imageName: "jupiterpng", hasRings: false),
+        .init(name: "Saturne", imageName: "saturnTek", hasRings: true),
+        .init(name: "Uranus", imageName: "uranuspng", hasRings: true),
+        .init(name: "Neptune", imageName: "neptunepng", hasRings: false),
     ]
 }
