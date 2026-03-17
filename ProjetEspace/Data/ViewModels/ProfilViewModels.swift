@@ -33,7 +33,8 @@ class ProfilViewModels {
             let decoded = try decoder.decode(ProfilResponse.self, from: data)
             
             let profils = decoded.records.map { $0.fields}
-            self.profils = profils
+            print(profils)
+            self.profils = profils.sorted { $1.profilePoints < $0.profilePoints }
             
         }catch{
             print ("Echec du décodage : profil")

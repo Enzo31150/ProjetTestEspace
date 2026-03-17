@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileMainTemplate: View {
-    @Bindable var vmProfile = ProfilViewModels()
+    @Binding var profil : Profile
     var body: some View {
         NavigationStack {
             ZStack {
@@ -34,8 +34,8 @@ struct ProfileMainTemplate: View {
                     }.padding(.trailing, 16)
                     ScrollView(showsIndicators: false) {
                         //LE PROFIL DANS L'ORDRE
-                        ProfileTopInfos(profilPicture: Profile(profileUsername: "Space Marine", profilePicture: [], profileDescription: "J'aime le lait et les biscuits.", profilePoints: 1997, profileLeaderboardPosition: 193))
-                        ProfileFavoriteBoard()
+                        ProfileTopInfos(profil: $profil)
+                        ProfileFavoriteBoard(profil: $profil)
                     }.padding(.top, 1)
                     Spacer()
                 }
@@ -46,5 +46,5 @@ struct ProfileMainTemplate: View {
 }
 
 #Preview {
-    ProfileMainTemplate()
+    ProfileMainTemplate(profil: .constant(Profile(profileUsername: "Space Marine", profilePicture: [], profileDescription: "J'aime les biscuits, et je n'ai pas d'image de profil.", profilePoints: 1997, profileLeaderboardPosition: 142)))
 }
