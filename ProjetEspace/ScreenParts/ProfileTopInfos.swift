@@ -27,6 +27,7 @@ struct ProfileTopInfos: View {
                 } else {
                     Image(systemName : "person.crop.circle")
                         .font(.system(size: 100))
+
                 }
 //            Image("spacemarine")
 //            .resizable()
