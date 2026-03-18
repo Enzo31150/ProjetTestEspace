@@ -11,11 +11,16 @@ struct RectangleClassement: View {
     @Bindable var vmProfil = ProfilViewModels()
     var body: some View {
         VStack {
-            ForEach(Array(vmProfil.profils.enumerated()).sorted { $1.element.profilePoints < $0.element.profilePoints }, id: \.element.profilePoints) { index, _ in
-                RectangleRow(profil: $vmProfil.profils[index])
+            ForEach($vmProfil.profils, id: \.profilePoints) { $profil in
+                NavigationLink {
+                    ProfileMainTemplate(profil: $profil)
+                } label: {
+                    RectangleRow(profil: $profil)
+
+                }
+
             }
-            
-        } .task {
+        }.task {
             do {
                 try await vmProfil.fetchProfils()
             } catch {
@@ -26,5 +31,7 @@ struct RectangleClassement: View {
 }
 
 #Preview {
-    RectangleClassement()
+    NavigationStack {
+        RectangleClassement()
+    }
 }

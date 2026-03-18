@@ -9,15 +9,17 @@ import SwiftUI
 
 struct ClassementView: View {
     var body: some View {
-        ZStack {
-            Image("ciel-etoile")
-                .ignoresSafeArea()
-                .frame(width: 100, height: 100)
-            
-            VStack {
-                backgroundClassement()
-                ScrollView(showsIndicators: false) {
-                    RectangleClassement()
+        NavigationStack {
+            ZStack {
+                Image("ciel-etoile")
+                    .ignoresSafeArea()
+                    .frame(width: 100, height: 100)
+                
+                VStack {
+                    backgroundClassement()
+                    ScrollView(showsIndicators: false) {
+                        RectangleClassement()
+                    }
                 }
             }
         }

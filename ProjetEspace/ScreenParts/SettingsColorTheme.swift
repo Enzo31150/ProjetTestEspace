@@ -53,7 +53,6 @@ struct SettingsColorTheme: View {
                         Toggle("", isOn: $settings.colorThemeThree)
                     }
                 }.toggleStyle(checkBoxStyle())
-                // J'arrive pas à mettre la fonction en haut
             }
         }
         .foregroundStyle(.white)

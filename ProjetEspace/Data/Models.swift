@@ -77,27 +77,27 @@ var userSettings = Settings(colorblindMode: false, calendarNotifications: true, 
 
 // Music Player à prévoir pour la V2?
 
-struct QuizzResponse: Codable {
-    let records: [QuizzResult]
-}
-
-struct QuizzResult: Codable {
-    let fields: Quizz
-}
-
-class Quizz: Codable {
-    var quizzName: String
-    var quizzProgress: Int = 0
-    var quizzDifficulty: Difficulty
-    var questions: [String]
-    
-    init(quizzName: String, quizzProgress: Int, quizzDifficulty: Difficulty, questions: [String] = []) {
-        self.quizzName = quizzName
-        self.quizzProgress = quizzProgress
-        self.quizzDifficulty = quizzDifficulty
-        self.questions = questions
-    }
-}
+//struct QuizzResponse: Codable {
+//    let records: [QuizzResult]
+//}
+//
+//struct QuizzResult: Codable {
+//    let fields: Quizz
+//}
+//
+//class Quizz: Codable {
+//    var quizzName: String
+//    var quizzProgress: Int = 0
+//    var quizzDifficulty: Difficulty
+//    var questions: [String]
+//    
+//    init(quizzName: String, quizzProgress: Int, quizzDifficulty: Difficulty, questions: [String] = []) {
+//        self.quizzName = quizzName
+//        self.quizzProgress = quizzProgress
+//        self.quizzDifficulty = quizzDifficulty
+//        self.questions = questions
+//    }
+//}
 
 struct QuestionsResponse: Codable {
     let records: [QuestionsResult]
@@ -132,22 +132,22 @@ struct CelestialObjectResult: Codable {
 struct CelestialObject: Identifiable, Codable {
     var id = UUID()
     var name: String
-    var image: String
+    var image: [Attachment]
     var description: String
     var distancetoSun: String?
     var size: String
-    var temp: Double
-    var hasSatellites: Bool
+    var temp: String
+    var hasSatellites: String
     var satellites: String?
     
     private enum CodingKeys: String, CodingKey {
-        case name
+        case name = "Name"
         case image = "Photos"
         case description = "text"
         case distancetoSun = "DistanceToSun"
         case size = "Taille (en rayon)"
         case temp = "Température moyenne"
-        case hasSatellites = "HasSatellites"
+        case hasSatellites = "HasSatellite"
         case satellites = "Satellites"
     }
 }
@@ -176,13 +176,14 @@ struct SpaceEvent: Identifiable {
 //    }
 }
 
-enum Difficulty: String, Codable {
-    case beginner = "Beginner"
-    case intermediary = "Intermediary"
-    case advanced = "Advanced"
-    case master = "Master"
-    case champion = "Champion"
-}
+//enum Difficulty: String, Codable, CaseIterable{
+//    var id: String { self.rawValue }
+//    case beginer = "Beginner"
+//    case intermediary = "Intermediary"
+//    case advanced = "Advanced"
+//    case master = "Master"
+//    case champion = "Champion"
+//}
 
 struct Attachment: Codable {
     let id: String
@@ -207,3 +208,5 @@ struct Planet: Identifiable, Equatable, Hashable {
     let hasRings: Bool
     // var moons: [Moon] // à ajouter plus  tard
 }
+
+

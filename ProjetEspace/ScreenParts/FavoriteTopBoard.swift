@@ -19,7 +19,7 @@ struct FavoriteTopBoard: View {
                     Text("Objet céleste préféré")
                         .font(Font.custom("ShareTechMono-Regular", size: 23))
                     NavigationLink {
-                        // ICI ECRAN OBSERVATION VERS DETAILS DE L'ETOILE
+                        DetailView()
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)

@@ -11,7 +11,7 @@ import SwiftUI
 struct ProjetEspaceApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LendingScreenView()
         }
     }
 }

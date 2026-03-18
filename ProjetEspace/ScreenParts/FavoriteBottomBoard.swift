@@ -20,7 +20,7 @@ struct FavoriteBottomBoard: View {
                         .font(Font.custom("ShareTechMono-Regular", size: 30))
                     HStack {
                         NavigationLink {
-                            
+                            DetailView()
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15)
@@ -44,7 +44,7 @@ struct FavoriteBottomBoard: View {
                             }
                         }
                         NavigationLink {
-                            
+                            DetailView()
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15)
