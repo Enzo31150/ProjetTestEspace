@@ -1,22 +1,13 @@
 //
-//  detailView.swift
+//  DetailJupiter.swift
 //  ProjetEspace
 //
-//  Created by Apprenant77 on 17/03/2026.
-//
-
-
-//
-//  detailView.swift
-//  ProjetEspace
-//
-//  Created by Tekures on 11/03/2026.
+//  Created by Apprenant77 on 18/03/2026.
 //
 
 import SwiftUI
 
-struct DetailView: View {
-    
+struct DetailJupiter: View {
     @State var isLiked: Bool = false
     
     var body: some View {
@@ -49,23 +40,24 @@ struct DetailView: View {
                     }
                 }
                 .padding(.horizontal)
-                Image("saturnTek")
+                Image("jupiterpng")
                     .resizable()
-                    .frame(width: 360, height: 360)
-                    .rotationEffect(Angle(degrees: 10))
+                    .frame(width: 440, height: 260)
+                
                 ZStack{
                     
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundStyle(Color.black.opacity(0.65))
-                        .padding(15)
+                        .padding(.vertical, 60)
+                        .padding(.horizontal, 25)
                     
                     VStack(alignment: .leading){
-                        Text("Saturne")
+                        Text("Jupiter")
                             .font(.largeTitle)
                             .foregroundColor(.buttonPurple)
                             .padding(.horizontal, 30)
                         
-                        Text("Saturne est certainement la planète du système solaire la plus facilement identifiable, grâce à ses célèbres anneaux. C'est la deuxième plus grosse planète du système solaire et elle est deux fois plus éloignée du Soleil que Jupiter.")
+                        Text("Jupiter est la plus grande planète de notre Système solaire, et c'est aussi la première planète gazeuse par ordre d'éloignement du Soleil. ")
                             .foregroundColor(.white)
                             .padding(.vertical, -5)
                             .padding(.horizontal, 30)
@@ -79,5 +71,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView()
+    DetailJupiter()
 }
