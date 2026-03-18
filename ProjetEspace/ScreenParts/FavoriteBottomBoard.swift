@@ -20,7 +20,7 @@ struct FavoriteBottomBoard: View {
                         .font(Font.custom("ShareTechMono-Regular", size: 30))
                     HStack {
                         NavigationLink {
-                            DetailView()
+                            DetailView(planet: planets[5])
                         } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15)
@@ -43,9 +43,9 @@ struct FavoriteBottomBoard: View {
                                 }
                             }
                         }
-                        NavigationLink {
-                            DetailView()
-                        } label: {
+//                        NavigationLink {
+//                            //DetailView(planet: planets.randomElement()!)
+//                        } label: {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15)
                                     .foregroundStyle(.buttonPurple)
@@ -66,7 +66,7 @@ struct FavoriteBottomBoard: View {
                                         .font(Font.custom("ShareTechMono-Regular", size: 22))
                                 }
                             }
-                        }
+                        //}
                     }
                     ZStack {
                         RoundedRectangle(cornerRadius: 15)

@@ -1,14 +1,25 @@
 //
-//  DetailJupiter.swift
+//  detailView.swift
 //  ProjetEspace
 //
-//  Created by Apprenant77 on 18/03/2026.
+//  Created by Apprenant77 on 17/03/2026.
+//
+
+
+//
+//  detailView.swift
+//  ProjetEspace
+//
+//  Created by Tekures on 11/03/2026.
 //
 
 import SwiftUI
 
-struct DetailJupiter: View {
+struct DetailView: View {
+    
     @State var isLiked: Bool = false
+    
+    var planet : Planett
     
     var body: some View {
        
@@ -40,24 +51,25 @@ struct DetailJupiter: View {
                     }
                 }
                 .padding(.horizontal)
-                Image("jupiterpng")
+                Image(planet.imageName)
                     .resizable()
-                    .frame(width: 440, height: 260)
-                
+                    .scaledToFill()
+                    .frame(width: 300, height: 300)
+                    .rotationEffect(Angle(degrees: 10))
                 ZStack{
                     
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundStyle(Color.black.opacity(0.65))
-                        .padding(.vertical, 60)
-                        .padding(.horizontal, 25)
+                        .padding(.vertical, 30)
+                        .padding(.horizontal, 15)
                     
                     VStack(alignment: .leading){
-                        Text("Jupiter")
+                        Text(planet.name)
                             .font(.largeTitle)
                             .foregroundColor(.buttonPurple)
                             .padding(.horizontal, 30)
                         
-                        Text("Jupiter est la plus grande planète de notre Système solaire, et c'est aussi la première planète gazeuse par ordre d'éloignement du Soleil. ")
+                        Text(planet.description)
                             .foregroundColor(.white)
                             .padding(.vertical, -5)
                             .padding(.horizontal, 30)
@@ -71,5 +83,5 @@ struct DetailJupiter: View {
 }
 
 #Preview {
-    DetailJupiter()
+    DetailView(planet: planets[0])
 }
