@@ -54,6 +54,31 @@ struct PlanetObservationScreen: View {
     }
 }
 
+
+
+var body: some View {
+    TabView {
+        PlanetObservationScreen()
+           .tabItem{
+             Label( "Oberservation", systemImage: "moon.stars.fill")
+            }
+        CalendarView()
+            .tabItem{
+                Label( "Calendrier", systemImage: "calendar"  )
+                }
+       QuizChoiceView()
+           .tabItem{
+               Label( "Quizz", systemImage: "lightbulb" )
+              }
+//       ProfileMainTemplate()
+//         .tabItem{
+//                Label( "Profil", systemImage: "person.crop.circle.fill" )
+//            }
+
+        
+        
+    }
+}
 #Preview {
     PlanetObservationScreen()
 }

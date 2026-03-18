@@ -132,22 +132,22 @@ struct CelestialObjectResult: Codable {
 struct CelestialObject: Identifiable, Codable {
     var id = UUID()
     var name: String
-    var image: String
+    var image: [Attachment]
     var description: String
     var distancetoSun: String?
     var size: String
-    var temp: Double
-    var hasSatellites: Bool
+    var temp: String
+    var hasSatellites: String
     var satellites: String?
     
     private enum CodingKeys: String, CodingKey {
-        case name
+        case name = "Name"
         case image = "Photos"
         case description = "text"
         case distancetoSun = "DistanceToSun"
         case size = "Taille (en rayon)"
         case temp = "Température moyenne"
-        case hasSatellites = "HasSatellites"
+        case hasSatellites = "HasSatellite"
         case satellites = "Satellites"
     }
 }
@@ -208,3 +208,5 @@ struct Planet: Identifiable, Equatable, Hashable {
     let hasRings: Bool
     // var moons: [Moon] // à ajouter plus  tard
 }
+
+
