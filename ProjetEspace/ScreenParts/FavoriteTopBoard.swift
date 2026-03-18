@@ -19,7 +19,7 @@ struct FavoriteTopBoard: View {
                     Text("Objet céleste préféré")
                         .font(Font.custom("ShareTechMono-Regular", size: 23))
                     NavigationLink {
-                        DetailView()
+                        DetailView(planet: planets[3])
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
@@ -32,10 +32,10 @@ struct FavoriteTopBoard: View {
                                         .foregroundStyle(.specialBlack)
                                 )
                             VStack {
-                                Image("placeholderSun") // AJOUTER DATA favori préféré objet céleste
+                                Image(planets[3].imageName) // AJOUTER DATA favori préféré objet céleste
                                     .resizable()
                                     .frame(width: 95, height: 90)
-                                Text("Le Soleil") // AJOUTER DATA favori préféré objet céleste
+                                Text(planets[3].name) // AJOUTER DATA favori préféré objet céleste
                                     .font(Font.custom("ShareTechMono-Regular", size: 25))
                             }
                         }
